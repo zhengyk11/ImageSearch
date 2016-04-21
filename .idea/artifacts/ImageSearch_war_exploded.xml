@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ImageSearch:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/ImageSearch_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ImageSearch" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="IKAnalyzer3.2.5Stable.jar" module-name="ImageSearch" />
+          <element id="library" level="module" name="lucene-core-3.5.0.jar" module-name="ImageSearch" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="ImageSearch/web/Web" />
+    </root>
+  </artifact>
+</component>
