@@ -1,8 +1,10 @@
+import org.apache.lucene.index.TermDocs;
+import org.apache.lucene.search.Collector;
+import org.apache.lucene.search.Scorer;
+import org.apache.lucene.search.Similarity;
+import org.apache.lucene.search.Weight;
 
 import java.io.IOException;
-
-import org.apache.lucene.index.*;
-import org.apache.lucene.search.*;
 
 /**
  * Expert: A <code>Scorer</code> for documents matching a <code>Term</code>.
@@ -134,8 +136,12 @@ final class SimpleScorer extends Scorer {
 	public float score() {
 		assert doc != -1;
 		//TODO: implements BM25 ranking algorithm
-		
-		return idf * this.termDocs.freq();
+
+        float tmp = (K1 + 1) * this.termDocs.freq();
+        tmp /= (this.termDocs.freq() + K1*(1 - this.b + this.b / (getSimilarity().decodeNormValue(norms[docID()]) * this.avgLength)) );
+        return idf * tmp;
+
+        //return idf * this.termDocs.freq();
 	}
 
 	/**
